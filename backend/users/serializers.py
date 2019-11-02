@@ -9,17 +9,21 @@ class UserSerializer(serializers.ModelSerializer):
             required=True,
             validators=[UniqueValidator(queryset=User.objects.all())]
             )
-    #username is required for all Users and are unique
+    #username is required for all Users, max of 32 characters and are unique
     username = serializers.CharField(
+            max_length=32,
             validators=[UniqueValidator(queryset=User.objects.all())]
             )
+
     #password req to have min lenght of 6 chars
     password = serializers.CharField(min_length=6,write_only=True)
 
     #creating a new User using djangos anthentication system
     def create(self, validated_data):
-        user = User.objects.create_user(validated_data['username'], validated_data['email'],
-             validated_data['password'])
+        user = User(email=validated_data['email'],
+                username=validated_data['username'])
+        user.set_password(validated_data['password'])
+        user.save()
         return user
 
     #defining that the corresponding model is User and id, username, email and pass are its fields
