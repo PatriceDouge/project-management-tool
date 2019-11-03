@@ -1,5 +1,11 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+
+import '../App.css';
+
+
+// import '.../styles/Navbar.css';
+
 class Navbar extends Component {
   render() {
     return (
@@ -9,12 +15,14 @@ class Navbar extends Component {
             <Link
               to="/"
               style={{
-                fontFamily: "monospace"
+                fontFamily: "monospace",
+                backgroundColor: "#09192F",
+                width: "100%",
               }}
-              className="col s5 brand-logo center black-text"
-            >
+              className="col s5 brand-logo center white-text" 
+              >
               {/* <i className="material-icons">code</i> */}
-              PROJECT MANAGEMENT TOOL
+              TRACKR
             </Link>
           </div>
         </nav>
