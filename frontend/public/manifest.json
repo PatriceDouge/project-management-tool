@@ -1,0 +1,9 @@
+{
+  "short_name": "PMT",
+  "name": "Project Management Tool",
+  "icons": [
+  
+  ],
+  "start_url": ".",
+  "display": "standalone"
+}
